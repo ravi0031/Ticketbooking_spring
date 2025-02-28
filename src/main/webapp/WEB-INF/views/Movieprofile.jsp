@@ -192,8 +192,8 @@ body {
            
 
             <div class="buttons">
-               <button onclick="location.href='${pageContext.request.contextPath}/tktbooking/booking/${movie.movieTitle}'">Book Tickets</button>
-                <button onclick="location.href='${pageContext.request.contextPath}/tktbooking/dashboard'">Back to Dashboard</button>
+               <button onclick="location.href='${pageContext.request.contextPath}/tktbooking/theaters?movieTitle=${movie.movieTitle}'">Book Tickets</button>
+               <button onclick="location.href='${pageContext.request.contextPath}/tktbooking/dashboard'">Back to Dashboard</button>
             </div>
         </div>
     </div>
