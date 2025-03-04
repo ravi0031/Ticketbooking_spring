@@ -63,12 +63,23 @@ public class TheatreController {
 	    }
 
 	    @GetMapping("/select-seats/{theaterId}/{showtimeId}")
-	    public String selectSeats(@PathVariable int theaterId, @PathVariable int showtimeId, Model model, @RequestParam("movieTitle") String movieTitle) {
+	    public String selectSeats( @PathVariable int theaterId, 
+	    	    @PathVariable int showtimeId,
+	    	    @RequestParam("movieTitle") String movieTitle,
+	    	    @RequestParam("theaterName") String theaterName,
+	    	    @RequestParam("theaterAddress") String theaterAddress,
+	    	    @RequestParam("showtime") String showtime,
+	    	    
+	    	    Model model){
 	        System.out.println("Received Theater ID: " + theaterId + ", ShowTime ID: " + showtimeId);
 	        Movie movie = movieService.getMovieByTitle(movieTitle);
+	        model.addAttribute("movieTitle", movieTitle);
+	        model.addAttribute("theaterName", theaterName);
+	        model.addAttribute("theaterAddress", theaterAddress);
+	        model.addAttribute("showtime", showtime);
+	        
 	        model.addAttribute("theaterId", theaterId);
 	        model.addAttribute("showtimeId", showtimeId);
-	        model.addAttribute("movie", movie);
 	        return "Seatselection";
 	    }
 	}
