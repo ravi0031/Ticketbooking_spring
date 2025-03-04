@@ -32,6 +32,8 @@ public class ShowTime {
     
     @Column(name = "show_time")
     private Date showTime;
+    
+    
 
     // Getters and setters
     public int getShowtimeId() {
