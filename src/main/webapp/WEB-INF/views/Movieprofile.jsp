@@ -154,7 +154,12 @@ body {
     background: #141e30;
     color: #ffffff;
 }
-
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #141e30;
+    color: #ffffff;
+}
 </style>
 </head>
 <body>
@@ -164,11 +169,9 @@ body {
         <h1>Movie Ticket Booking</h1>
         <div class="nav-links">
             <a href="${pageContext.request.contextPath}/tktbooking/dashboard">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Events</a>
-            <a href="#">Plays</a>
-            <a href="#">Sports</a>
-            <a href="#">Sign In</a>
+          
+            <a href="#">Sign Up</a>
+            <a href="#">Profile</a>
         </div>
     </div>
 

@@ -8,11 +8,12 @@
     <title>Movies Dashboard</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+         font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -60,11 +61,49 @@
 
     background-color: #f0f0f0;
 }
+      .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffcc00;
+   
+    padding: 15px 50px;
+     border-bottom: 2px solid red;
+}
+
+.navbar h1 {
+    margin: 0;
+    color: #141e30;
+}
+
+.nav-links a {
+    color: #141e30;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #243b55;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #141e30;
+    color: #ffffff;
+}
     </style>
 </head>
 <body>
 
-    <h1 style="text-align:center; padding: 20px 0;">Movies List Dashboard</h1>
+      <div class="navbar">
+        <h1>Movie Ticket Booking</h1>
+        <div class="nav-links">
+            <a href="${pageContext.request.contextPath}/tktbooking/dashboard">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Profile</a>
+        </div>
+    </div>
 
     <div class="container">
         <!-- Loop through the list of movies -->
@@ -83,6 +122,8 @@
             </div>
         </c:forEach>
     </div>
-
+   <div class="footer">
+        <p>&copy; 2025 Movie Ticket Booking. All Rights Reserved.</p>
+    </div>
 </body>
 </html>

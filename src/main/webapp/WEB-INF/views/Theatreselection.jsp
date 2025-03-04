@@ -5,107 +5,8 @@
 <head>
     <title>Theatres - BookMyShow Style</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-        .container {
-            width: 90%;
-            margin: 20px auto;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: #333;
-            color: white;
-        }
-        .navbar div {
-            cursor: pointer;
-            padding: 10px;
-        }
-        .navbar div:hover {
-            background-color: #555;
-            border-radius: 5px;
-        }
-        .date-slider {
-            margin: 20px 0;
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-            white-space: nowrap;
-        }
-        .date-slider div {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .date-slider div:hover {
-            background: #45a049;
-        }
-        .theatres {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .theatre-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-        .theatre-card:hover {
-            transform: translateY(-10px);
-        }
-        .theatre-image {
-            width: 100%;
-            height: 180px;
-            background: #ddd;
-        }
-        .theatre-info {
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .theatre-info h3 {
-            margin: 0;
-            font-size: 18px;
-        }
-        .location {
-            font-size: 14px;
-            color: #555;
-        }
-        .show-times {
-            padding: 10px 15px;
-        }
-        .show-times span {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 5px 8px;
-            border-radius: 5px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            cursor: pointer;
-        }
-        /* General styling for the page */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
+
+
 
 /* Container for all theatres */
 .theatres {
@@ -121,7 +22,7 @@ body {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+     background: linear-gradient(to right, #141e30, #243b55);
     transition: transform 0.2s ease;
     cursor: pointer;
 }
@@ -134,7 +35,7 @@ body {
     font-size: 1.4em;
     margin: 0;
     padding: 15px;
-    background-color: #007bff;
+    background: #ffcc00;
     color: #fff;
     text-align: center;
 }
@@ -189,27 +90,54 @@ body {
     background-color: #007bff;
     color: #fff;
 }
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffcc00;
+    padding: 15px 50px;
+}
+
+.navbar h1 {
+    margin: 0;
+    color: #141e30;
+}
+
+.nav-links a {
+    color: #141e30;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #243b55;
+}
         
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="navbar">
-            <div>Logo</div>
-            <div>Search Movies</div>
-            <div>Search Theatres</div>
-            <div>Profile</div>
+ <div class="header">
+      <div class="navbar">
+        <h1>Movie Ticket Booking</h1>
+        <div class="nav-links">
+            <a href="${pageContext.request.contextPath}/tktbooking/dashboard">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Profile</a>
         </div>
+    </div>
 
-        <div class="date-slider">
-            <div>Feb 25</div>
-            <div>Feb 26</div>
-            <div>Feb 27</div>
-            <div>Feb 28</div>
-            <div>Feb 29</div>
-            <div>Mar 1</div>
-            <div>Mar 2</div>
-        </div>
+
+ <input type="date" id= "selecteddate" name="date">
 <div class="movie-info">
     <h2>Now Showing: ${movie.movieTitle}</h2>
     <p><strong>Genre:</strong> ${movie.genre}</p>
@@ -226,8 +154,15 @@ body {
                     <c:forEach var="showtime" items="${theater.showtimes}">
                         <div class="showtime-card">
                             <p>${showtime.time}</p>
-                            <a href="/tktbooking/select-seats/${theater.theaterId}/${showtime.showtimeId}?movieTitle=${movie.movieTitle}">Select Seats</a>
-                                Select Seats (Theater: ${theater.theaterId}, Showtime: ${showtime.showtimeId})
+                            <a href="/tktbooking/select-seats/${theater.theaterId}/${showtime.showtimeId}
+    ?movieTitle=${movie.movieTitle}
+    &genre=${ movie.genre}
+    &theaterName=${theater.theaterName}
+    &theaterAddress=${theater.address}, ${theater.city}
+    &showtime=${showtime.time}
+    ">
+    Select Seats</a>
+                               
                         </div>
                     </c:forEach>
                 </div>
@@ -235,6 +170,7 @@ body {
         </c:forEach>
     </div>
 </body>
+
 </html>
 
 
